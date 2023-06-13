@@ -40,9 +40,28 @@ RSpec.describe Carnival do
     end
   end
 
-  describe "#duration" do
-    it "has a duration as well as a way to read that data" do
+  describe "#most_popular_ride" do
+    it "can tell us its most popular ride" do
+      # visitors have the preferences
+      @visitor1.add_preference(:gentle)
+      @visitor2.add_preference(:gentle)
+      @visitor3.add_preference(:gentle)
 
+      @visitor1.add_preference(:thrilling)
+      @visitor2.add_preference(:thrilling)
+      @visitor3.add_preference(:thrilling)
+
+      # visitors board rides
+      @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor2)
+
+      @ride2.board_rider(@visitor3)
+
+      @ride3.board_rider(@visitor1)
+      @ride3.board_rider(@visitor2)
+      @ride3.board_rider(@visitor3)
+
+      expect(@fun_land.most_popular_ride).to eq(@ride3)
     end
   end
 end
