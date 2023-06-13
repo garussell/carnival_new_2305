@@ -147,7 +147,24 @@ RSpec.describe Carnival do
 
       allow(@fun_land).to receive(:summary).and_return(summary_data)
 
-      expect(@fun_land.summary).to eq(summary_data)
+      expect(@fun_land.summary).to eq({})
+    end
+  end
+
+  # helper methods for summary
+
+  describe "#visitor_count" do
+    it "can count total number of visitors" do
+       # visitors board rides
+      @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor2)
+      @ride1.board_rider(@visitor3)
+    
+      @ride2.board_rider(@visitor3)
+      @ride3.board_rider(@visitor1)
+      @ride3.board_rider(@visitor3)
+  
+      expect(@fun_land.visitor_count).to eq(3)
     end
   end
 end
