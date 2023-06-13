@@ -13,4 +13,15 @@ RSpec.describe Visitor do
       expect(@visitor1.spending_money).to eq(10)
     end
   end
+
+  describe "#add_preference(preference)" do
+    it "can add preferences" do
+      expect(@visitor1.preferences).to eq([])
+
+      @visitor1.add_preference(:gentle)
+      @visitor1.add_preference(:thrilling)
+
+      expect(@visitor1.preferences).to eq([:gentle, :thrilling])
+    end
+  end
 end
