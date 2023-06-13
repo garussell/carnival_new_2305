@@ -3,6 +3,8 @@ require './spec/spec_helper'
 RSpec.describe Visitor do
   before(:each) do
     @visitor1 = Visitor.new('Bruce', 54, '$10')
+    @visitor2 = Visitor.new('Tucker', 36, '$5')
+    @visitor3 = Visitor.new('Penny', 64, '$15')
   end
 
   describe "#initialize" do
@@ -22,6 +24,15 @@ RSpec.describe Visitor do
       @visitor1.add_preference(:thrilling)
 
       expect(@visitor1.preferences).to eq([:gentle, :thrilling])
+    end
+  end
+
+  describe "#tall_enough?(required_height)" do
+    it "can tell you if the visitor is tall enough" do
+      expect(@visitor1.tall_enough?(54)).to be true
+      expect(@visitor2.tall_enough?(54)).to be false
+      expect(@visitor3.tall_enough?(54)).to be true
+      expect(@visitor1.tall_enough?(64)).to be false
     end
   end
 end
