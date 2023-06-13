@@ -30,10 +30,12 @@ class Carnival
   end
 
   def summary
-    # visitor_count: helper method - returns sum of rider_log
-    # revenue_earned: total_revenue_all_rides
+    {
+      visitor_count: visitor_count
+      revenue_earned: total_revenue_all_rides
     # visitors: create helper method that returns array of visitor hashes
     # rides: create helper method that returns array of ride hashes
+    }
   end
 
   # helper methods for summary
