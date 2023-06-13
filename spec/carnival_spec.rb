@@ -167,4 +167,37 @@ RSpec.describe Carnival do
       expect(@fun_land.visitor_count).to eq(3)
     end
   end
+
+  # describe "#visitor_data" do
+  #   it "can return an array of visitor information" do
+  #     # visitors board rides
+  #     @ride1.board_rider(@visitor1)
+  #     @ride1.board_rider(@visitor2)
+  #     @ride1.board_rider(@visitor3)
+    
+  #     @ride2.board_rider(@visitor3)
+  #     @ride3.board_rider(@visitor1)
+  #     @ride3.board_rider(@visitor3)
+
+  #     visitors: [
+  #         {
+  #           visitor: @visitor1,
+  #           favorite_ride: @ride1,
+  #           total_money_spent: 3
+  #         },
+  #         {
+  #           visitor: @visitor2,
+  #           favorite_ride: @ride2,
+  #           total_money_spent: 1
+  #         },
+  #         {
+  #           visitor: @visitor3,
+  #           favorite_ride: @ride3,
+  #           total_money_spent: 8
+  #         }
+  #       ]
+
+  #     expect(@fun_land.visitor_data).to eq(visitors)
+  #   end
+  end
 end
