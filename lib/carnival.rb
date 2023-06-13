@@ -13,4 +13,11 @@ class Carnival
     end
     popular_ride[1]
   end
+
+  def most_profitable_ride
+    most_profit = rides.max_by do |ride|
+      ride.last.total_revenue
+    end
+    most_profit[1]
+  end
 end
