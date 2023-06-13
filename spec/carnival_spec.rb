@@ -23,10 +23,18 @@ RSpec.describe Carnival do
     })
     @rides = { ride1: @ride1, ride2: @ride2, ride3: @ride3 }
     
-    # visitors
-    @visitor1 = Visitor.new('Bruce', 54, '$10')
-    @visitor2 = Visitor.new('Tucker', 36, '$5')
-    @visitor3 = Visitor.new('Penny', 64, '$15')
+    # visitors have money
+    @visitor1 = Visitor.new('Bruce', 54, '$100')
+    @visitor2 = Visitor.new('Tucker', 36, '$50')
+    @visitor3 = Visitor.new('Penny', 64, '$150')
+    # visitors have the preferences
+    @visitor1.add_preference(:gentle)
+    @visitor2.add_preference(:gentle)
+    @visitor3.add_preference(:gentle)
+
+    @visitor1.add_preference(:thrilling)
+    @visitor2.add_preference(:thrilling)
+    @visitor3.add_preference(:thrilling)
     
     # carnivals
     @fun_land = Carnival.new(14, @rides)
@@ -42,15 +50,6 @@ RSpec.describe Carnival do
 
   describe "#most_popular_ride" do
     it "can tell us its most popular ride" do
-      # visitors have the preferences
-      @visitor1.add_preference(:gentle)
-      @visitor2.add_preference(:gentle)
-      @visitor3.add_preference(:gentle)
-
-      @visitor1.add_preference(:thrilling)
-      @visitor2.add_preference(:thrilling)
-      @visitor3.add_preference(:thrilling)
-
       # visitors board rides
       @ride1.board_rider(@visitor1)
       @ride1.board_rider(@visitor2)
@@ -62,6 +61,26 @@ RSpec.describe Carnival do
       @ride3.board_rider(@visitor3)
 
       expect(@fun_land.most_popular_ride).to eq(@ride1)
+    end
+  end
+
+  describe "#most_profitable_ride" do
+    it "can tell us its most profitable ride" do
+      # visitors board rides
+      2.times do
+        @ride1.board_rider(@visitor1)
+        @ride1.board_rider(@visitor2)
+        @ride1.board_rider(@visitor3)
+      end
+
+      @ride2.board_rider(@visitor3)
+
+      2.times do
+        @ride3.board_rider(@visitor1)
+        @ride3.board_rider(@visitor3)
+      end
+
+      expect(@fun_land.most_profitable_ride).to eq(@ride3)
     end
   end
 end
