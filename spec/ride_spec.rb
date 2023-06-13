@@ -36,4 +36,10 @@ RSpec.describe Ride do
       expect(@ride1.excitement).to eq(:gentle)
     end
   end
+
+  describe "#total_revenue" do
+    it "can add up revenue gained from visitors" do
+      expect(@total_revenue).to eq(0)
+    end
+  end
 end
