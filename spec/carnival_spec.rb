@@ -54,14 +54,14 @@ RSpec.describe Carnival do
       # visitors board rides
       @ride1.board_rider(@visitor1)
       @ride1.board_rider(@visitor2)
+      @ride1.board_rider(@visitor3)
 
       @ride2.board_rider(@visitor3)
 
       @ride3.board_rider(@visitor1)
-      @ride3.board_rider(@visitor2)
       @ride3.board_rider(@visitor3)
 
-      expect(@fun_land.most_popular_ride).to eq(@ride3)
+      expect(@fun_land.most_popular_ride).to eq(@ride1)
     end
   end
 end
