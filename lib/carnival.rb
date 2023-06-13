@@ -20,4 +20,12 @@ class Carnival
     end
     most_profit[1]
   end
+
+  def total_revenue_all_rides
+    revenue_counter = 0
+    rides.each do |ride|
+      revenue_counter += ride.last.total_revenue
+    end
+    revenue_counter
+  end
 end
