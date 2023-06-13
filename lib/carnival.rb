@@ -29,18 +29,18 @@ class Carnival
     revenue_counter
   end
 
-  def summary
-    {
-      visitor_count: visitor_count
-      revenue_earned: total_revenue_all_rides
-    # visitors: create helper method that returns array of visitor hashes
-    # rides: create helper method that returns array of ride hashes
-    }
-  end
+  # def summary
+  #   {
+  #     visitor_count: visitor_count
+  #     revenue_earned: total_revenue_all_rides
+  #   # visitors: create helper method that returns array of visitor hashes
+  #   # rides: create helper method that returns array of ride hashes
+  #   }
+  # end
 
   # helper methods for summary
 
-  def visitor_count
-    rides.values.flat_map { |ride| ride.rider_log.keys }.uniq.count
-  end
+  # def visitor_count
+  #   rides.values.flat_map { |ride| ride.rider_log.keys }.uniq.count
+  # end
 end
